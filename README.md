@@ -50,7 +50,7 @@ helm upgrade --install my-api-service /home/batmo/simple-api-service/api-service
 3. **Verify Deployment:** Ensure the service is correctly deployed: 
 kubectl get deployments  
   kubectl get pods
-**Watch for any issues, particularly with image pulling or probe configurations.**
+**Watch for any issues, particularly with image pulling or probe configurations.(the cluster port in the values.yamlis runing on 8080 please make sure this port does not conflict to avoid any issues while pullingt the image and running the pod**
 ### Testing the Service To test the service after deployment: 1. **Access via Minikube:** Use Minikube 
 minikube service my-api-service
 
