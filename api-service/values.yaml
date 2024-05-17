@@ -41,7 +41,7 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 80
+  port: 8080
 
 ingress:
   enabled: false
@@ -73,12 +73,17 @@ resources: {}
 
 livenessProbe:
   httpGet:
-    path: /
-    port: http
+    path: /healthz
+    port: 5000
+  initialDelaySeconds: 3
+  periodSeconds: 3
+
 readinessProbe:
   httpGet:
-    path: /
-    port: http
+    path: /ready
+    port: 5000
+  initialDelaySeconds: 3
+  periodSeconds: 3
 
 autoscaling:
   enabled: false
@@ -105,3 +110,4 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
