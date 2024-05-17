@@ -13,11 +13,38 @@ docker build -t simple-api-service .
 #TODO: Automate image version tagging to avoid using "latest" in a real situation. 
 ###Running the Docker Image Locally 1. **Run the Container:** Start the Docker container to test locally. This command maps port 5000 of the host to port 5000 of the container. 
 docker run -p 5000:5000 simple-api-service
+
+Access the Application
+
+You can now access the service at http://localhost:5000/data.
+
+The application exposes the following endpoints:
+
+/data: Returns a simple JSON message.
+/metrics: Returns Prometheus metrics.
+/healthz: Liveness probe endpoint.
+/ready: Readiness probe endpoint.
+You can test these endpoints using curl:
+
+curl http://localhost:5000/data
+curl http://localhost:5000/metrics
+curl http://localhost:5000/healthz
+curl http://localhost:5000/ready
+
 You can now access the service at http://localhost:5000/data.
  ### Deploying to Kubernetes with Helm 1. **Start Minikube:** If using Minikube for a local Kubernetes environment, start it with: 
 minikube start
-2. **Deploy Using Helm:** Deploy the application using Helm to manage the Kubernetes resources: 
-helm upgrade --install my-api-service ./api-service
+2. **Deploy Using Helm:** 
+Ensure your Helm chart is updated with the correct image repository and tag:
+
+image:
+  repository: <your-docker-registry>/simple-api-service
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+Deploy the application using Helm to manage the Kubernetes resources:
+ 
+helm upgrade --install my-api-service /home/batmo/simple-api-service/api-service/
 
 #TODO: Ensure Helm charts include resource limits and requests for production readiness. 
 3. **Verify Deployment:** Ensure the service is correctly deployed: 
