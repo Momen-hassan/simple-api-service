@@ -54,3 +54,9 @@ kubectl get deployments
 ### Testing the Service To test the service after deployment: 1. **Access via Minikube:** Use Minikube 
 minikube service my-api-service
 
+Meaningful Comments
+The git commits include meaningful comments to explain the changes made:
+
+git add .
+git commit -m "Updated application and Dockerfile"
+git push origin main
