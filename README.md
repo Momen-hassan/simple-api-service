@@ -44,7 +44,7 @@ image:
 
 Deploy the application using Helm to manage the Kubernetes resources:
  
-helm upgrade --install my-api-service /home/batmo/simple-api-service/api-service/
+helm upgrade --install my-api-service /simple-api-service/api-service/
 
 #TODO: Ensure Helm charts include resource limits and requests for production readiness. 
 3. **Verify Deployment:** Ensure the service is correctly deployed: 
